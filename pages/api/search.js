@@ -17,7 +17,9 @@ const searchHandler = async (req, res) => {
       id: result.id,
       title: result.webTitle,
       url: result.webUrl,
-      date: result.webPublicationDate
+      date: result.webPublicationDate,
+      sectionId: result.sectionId,
+      sectionName: result.sectionName,
     }
   })
 
