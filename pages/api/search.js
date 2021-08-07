@@ -14,8 +14,10 @@ const searchHandler = async (req, res) => {
 
   const apiResults = searchResults.data.response.results.map(result => {
     return {
+      id: result.id,
       title: result.webTitle,
       url: result.webUrl,
+      date: result.webPublicationDate
     }
   })
 

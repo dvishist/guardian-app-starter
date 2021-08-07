@@ -6,7 +6,7 @@ export default function Results({ results }) {
 		<div>
 			<h2>Results</h2>
 			{results.map(result => (
-				<ResultItem key={result.key} result={result} />
+				<ResultItem key={result.id} result={result} />
 			))}
 		</div>
 	)
