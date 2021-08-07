@@ -4,12 +4,13 @@ import Results from './components/Results'
 
 const IndexPage = () => {
 	const [results, setResults] = useState([])
+	const [isLoading, setLoading] = useState(false)
 
 	return (
 		<div>
 			<h1>Guardian Search</h1>
-			<Form setResults={setResults} />
-			<Results results={results} />
+			<Form setResults={setResults} setLoading={setLoading} />
+			<Results results={results} isLoading={isLoading} />
 		</div>
 	)
 }
