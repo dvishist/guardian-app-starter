@@ -7,7 +7,7 @@ export default function ResultItem({ result }) {
 	const date = new Date(result.date).toLocaleDateString('en-US', options)
 
 	return (
-		<div>
+		<div style={{ margin: '2px' }}>
 			<Card>
 				<CardContent>
 					<a href={result.url}>{result.title}</a>

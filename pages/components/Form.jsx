@@ -6,6 +6,7 @@ export default function Form({ setResults }) {
 	const [showRecent, setShowRecent] = useState(false)
 
 	const doSearch = async () => {
+		if (!term) alert('Please enter a search term')
 		const resultSet = await axios.get('/api/search', {
 			params: {
 				term: term,
