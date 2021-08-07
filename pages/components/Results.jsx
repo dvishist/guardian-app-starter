@@ -1,5 +1,6 @@
 import React from 'react'
-import ResultItem from './ResultItem'
+import ResultGroup from './ResultGroup'
+
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 export default function Results({ results, isLoading }) {
@@ -17,8 +18,8 @@ export default function Results({ results, isLoading }) {
 			<h2>Results</h2>
 			{isLoading && <CircularProgress />}
 			<div style={{ display: 'grid' }}>
-				{results.map(result => (
-					<ResultItem key={result.id} result={result} />
+				{Object.keys(classifiedResults).map(groupName => (
+					<ResultGroup key={groupName} results={classifiedResults[groupName]} />
 				))}
 			</div>
 		</div>
