@@ -10,6 +10,7 @@ export default function ResultItem({ result }) {
 		<div style={{ margin: '2px' }}>
 			<Card>
 				<CardContent>
+					<img height='40' width='40' src={result.thumbnail} />
 					<a href={result.url}>{result.title}</a>
 					{` ${date}`}
 				</CardContent>

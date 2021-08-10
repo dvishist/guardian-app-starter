@@ -8,9 +8,12 @@ const searchHandler = async (req, res) => {
     params: {
       'api-key': process.env.GUARDIAN_API_KEY,
       'q': req.query.term,
-      'from-date': req.query.showRecent ? date : null
+      'from-date': req.query.showRecent ? date : null,
+      'show-fields': 'thumbnail'
     }
   })
+
+  console.log(searchResults.data.response.results)
 
   const apiResults = searchResults.data.response.results.map(result => {
     return {
@@ -20,6 +23,7 @@ const searchHandler = async (req, res) => {
       date: result.webPublicationDate,
       sectionId: result.sectionId,
       sectionName: result.sectionName,
+      thumbnail: result.fields.thumbnail || ''
     }
   })
 

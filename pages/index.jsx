@@ -9,7 +9,7 @@ const IndexPage = () => {
 	return (
 		<div>
 			<h1>Guardian Search</h1>
-			<Form setResults={setResults} setLoading={setLoading} />
+			<Form setResults={setResults} setLoading={setLoading} isLoading={isLoading} />
 			<Results results={results} isLoading={isLoading} />
 		</div>
 	)

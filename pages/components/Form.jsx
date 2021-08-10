@@ -1,28 +1,24 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
-export default function Form({ setResults, setLoading }) {
+export default function Form({ setResults, isLoading, setLoading }) {
 	const [term, setTerm] = useState('')
 	const [showRecent, setShowRecent] = useState(false)
+	const submitButton = useRef(null)
 
 	const doSearch = async () => {
 		if (!term) return alert('Please enter a search term')
 
 		setLoading(true)
-		axios
-			.get('/api/search', {
-				params: {
-					term: term,
-					showRecent
-				}
-			})
-			.then(resultSet => {
-				setResults(resultSet.data)
-				setLoading(false)
-			})
-			.catch(err => {
-				console.log(err)
-			})
+		setResults([])
+		const resultSet = await axios.get('/api/search', {
+			params: {
+				term: term,
+				showRecent
+			}
+		})
+		setResults(resultSet.data)
+		setLoading(false)
 	}
 
 	return (
@@ -40,7 +36,9 @@ export default function Form({ setResults, setLoading }) {
 			</label>
 			<br />
 			<input value={term} onChange={evt => setTerm(evt.target.value)} />
-			<button onClick={() => doSearch()}>Search</button>
+			<button disabled={isLoading} onClick={() => doSearch()}>
+				Search
+			</button>
 		</div>
 	)
 }
